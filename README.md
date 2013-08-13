@@ -1,12 +1,12 @@
-# FaradayMiddleware::MultiJson
+# FaradayMiddleware::ActiveSupportJson
 
-Simple Faraday middleware that uses MultiJson to unobtrusively encode JSON requests and parse JSON responses.
+Simple Faraday middleware that uses ActiveSupport::JSON to unobtrusively encode JSON requests and parse JSON responses.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'faraday_middleware-multi_json'
+    gem 'faraday_middleware-active_support_json'
 
 And then execute:
 
@@ -14,18 +14,18 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install faraday_middleware-multi_json
+    $ gem install faraday_middleware-active_support_json
 
 ## Usage
 
 The same as FaradayMiddleware::ParseJson:
 
 ```ruby
-require 'faraday_middleware/multi_json'
+require 'faraday_middleware/active_support_json'
 
 connection = Faraday.new do |conn|
-  conn.request :multi_json
-  conn.response :multi_json
+  conn.request :active_support_json
+  conn.response :active_support_json
   conn.adapter  Faraday.default_adapter
 end
 
@@ -39,24 +39,12 @@ end
 ### Passing parser options
 
 ```ruby
-conn.response :multi_json, symbolize_keys: true
+conn.response :active_support_json, symbolize_keys: true
 ```
 
-### Upgrading to 0.0.5+
+### Credits
 
-The class name for the middleware changed, so if you had this before:
-
-```ruby
-connection = Faraday.new do |conn|
-  conn.use FaradayMiddleware::MultiJson
-end
-```
-Change to:
-```ruby
-connection = Faraday.new do |conn|
-  conn.response :multi_json
-end
-```
+This gem is a fork of [https://github.com/denro/faraday_middleware-multi_json](FaradayMiddleware::MultiJson)
 
 ## Contributing
 

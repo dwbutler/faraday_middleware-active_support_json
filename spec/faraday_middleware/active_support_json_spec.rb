@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe FaradayMiddleware::MultiJson::ParseJson do
+describe FaradayMiddleware::ActiveSupport::ParseJson do
   let(:response) { {:a => 1, :b => 2} }
-  let(:json) { ::MultiJson.dump(response) }
+  let(:json) { ::ActiveSupport::JSON.encode(response) }
 
   def connection(options={})
     Faraday.new do |builder|
-      builder.response :multi_json, options
+      builder.response :active_support_json, options
       builder.adapter :test do |stub|
         stub.get('/') do
           [200, {}, json]
@@ -24,13 +24,13 @@ describe FaradayMiddleware::MultiJson::ParseJson do
   end
 end
 
-describe FaradayMiddleware::MultiJson::EncodeJson do
+describe FaradayMiddleware::ActiveSupport::EncodeJson do
   let(:request) { {:a => 1, :b => 2} }
-  let(:json) { ::MultiJson.dump(request) }
+  let(:json) { ::ActiveSupport::JSON.encode(request) }
 
   def connection
     Faraday.new do |builder|
-      builder.request :multi_json
+      builder.request :active_support_json
       builder.adapter :test do |stub|
         stub.post('/update', json) do
           [200, {}, json]

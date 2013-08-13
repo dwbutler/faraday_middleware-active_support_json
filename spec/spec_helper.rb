@@ -16,4 +16,4 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
-require 'faraday_middleware/multi_json'
+require 'faraday_middleware/active_support_json'
