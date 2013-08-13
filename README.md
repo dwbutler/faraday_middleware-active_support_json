@@ -1,5 +1,7 @@
 # FaradayMiddleware::ActiveSupportJson
 
+[![Build Status](https://travis-ci.org/dwbutler/faraday_middleware-active_support_json.png?branch=master)](https://travis-ci.org/dwbutler/faraday_middleware-active_support_json)
+
 Simple Faraday middleware that uses ActiveSupport::JSON to unobtrusively encode JSON requests and parse JSON responses.
 
 ## Installation
@@ -42,9 +44,9 @@ end
 conn.response :active_support_json, symbolize_keys: true
 ```
 
-### Credits
+## Credits
 
-This gem is a fork of [https://github.com/denro/faraday_middleware-multi_json](FaradayMiddleware::MultiJson)
+This gem is a fork of [FaradayMiddleware::MultiJson](https://github.com/denro/faraday_middleware-multi_json)
 
 ## Contributing
 
