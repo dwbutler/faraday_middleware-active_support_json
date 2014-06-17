@@ -12,10 +12,10 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = 'faraday_middleware-active_support_json'
   gem.require_paths = ['lib']
-  gem.version       = '0.0.1'
+  gem.version       = '0.0.2'
 
   gem.add_dependency 'faraday_middleware'
-  gem.add_dependency 'activesupport'
+  gem.add_dependency 'activesupport', '< 4'
 
   gem.add_development_dependency 'rspec'
 end

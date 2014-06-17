@@ -25,5 +25,5 @@ module FaradayMiddleware
   end
 end
 
-Faraday.register_middleware :response, :active_support_json => FaradayMiddleware::ActiveSupport::ParseJson
-Faraday.register_middleware :request, :active_support_json => FaradayMiddleware::ActiveSupport::EncodeJson
+Faraday::Response.register_middleware :active_support_json => FaradayMiddleware::ActiveSupport::ParseJson
+Faraday::Request.register_middleware :active_support_json => FaradayMiddleware::ActiveSupport::EncodeJson
