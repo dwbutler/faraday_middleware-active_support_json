@@ -4,10 +4,17 @@ require 'faraday_middleware/request/encode_json'
 module FaradayMiddleware
   module ActiveSupport
     class ParseJson < FaradayMiddleware::ResponseMiddleware
+      dependency 'active_support/version'
       dependency 'active_support/json'
 
-      def parse(body)
-        ::ActiveSupport::JSON.decode(body, @options) rescue body
+      if ::ActiveSupport::VERSION::MAJOR < 4
+        def parse(body)
+          ::ActiveSupport::JSON.decode(body, @options) rescue body
+        end
+      else
+        def parse(body)
+          ::ActiveSupport::JSON.decode(body) rescue body
+        end
       end
     end
 

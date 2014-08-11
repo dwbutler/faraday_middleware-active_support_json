@@ -19,8 +19,10 @@ describe FaradayMiddleware::ActiveSupport::ParseJson do
     connection.get('/').body.should == {'a'=>1, 'b'=>2}
   end
 
-  it 'should delegate options given by builder' do
-    connection(:symbolize_keys => true).get('/').body.should == response
+  if ::ActiveSupport::VERSION::MAJOR < 4
+    it 'should delegate options given by builder' do
+      connection(:symbolize_keys => true).get('/').body.should == response
+    end
   end
 end
 
